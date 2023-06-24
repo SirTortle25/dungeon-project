@@ -2,6 +2,7 @@ import './App.css';
 import Navbar from './components/Navbar'
 import CardContainer from './components/CardContainer';
 import Button from './components/Button';
+import CardForm from './components/CardForm';
 
 function App() {
    
@@ -13,7 +14,7 @@ function App() {
     <div className="App">
         <Navbar />
         <CardContainer />
-        <Button text="Add New Card" color="bg-blue-600" action={addCard}/>
+        <CardForm />
     </div>
   );
 }
