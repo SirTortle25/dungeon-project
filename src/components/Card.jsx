@@ -1,6 +1,6 @@
 export default function Card( props ) {
     return (
-        <div className="flex flex-col bg-amber-600 rounded-lg justify-center items-center max-w-sm shadow-md shadow-amber-800">
+        <div className="flex w-1/6 h-100 text-Text flex-col bg-Primary border-4 border-Outline rounded-lg justify-center items-center max-w-sm shadow-md shadow-Dark">
             <div className="">
                 <h1 className="">Level: {props.level}</h1>
             </div>
@@ -9,6 +9,7 @@ export default function Card( props ) {
                 <p>{props.changes}</p>
                 <h2>Items</h2>
                 <p>{props.items}</p>
+                <button class="bg-Outline hover:bg-Background text-Text font-bold py-2 px-4 rounded" >Open</button>
             </div>
             <div className="">
                 <p>Trash</p>
