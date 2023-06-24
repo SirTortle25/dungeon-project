@@ -2,19 +2,22 @@ import Button from "./Button";
 
 export default function Card( props ) {
     return (
-        <div className="flex w-1/6 h-100 text-custom-text flex-col bg-custom-primary border-4 border-custom-outline rounded-lg justify-center items-center max-w-sm shadow-md shadow-custom-dark">
-            <div className="">
-                <h1 className="">Level: {props.level}</h1>
+        <div className="flex flex-col p-4 text-custom-text bg-custom-primary border-custom-outline shadow-custom-dark border-4 rounded-lg shadow-md">
+            <div className="flex justify-between w-full gap-2">
+                <h1 className="w-full font-bold text-lg text-center">Level: {props.level}</h1>
+                <h1 className="w-full font-bold text-lg text-center">Class: {props.class}</h1>
             </div>
-            <div className="">
-                <h2>Class{}</h2>
-                <p>{props.changes}</p>
-                <h2>Items</h2>
-                <p>{props.items}</p>
+            <div>
+                <h2 className="font-bold text-lg">Class</h2>
+                {props.classChanges.map( ( change, index ) => <p key={index}>{change}</p> )}
+            </div>
+            <div>
+                <h2 className="font-bold text-lg">Items</h2>
+                {props.itemChanges.map( ( item, index ) => <p key={index}>{item}</p> )}
+            </div>
+            <div className="flex justify-between w-full gap-2">
                 <Button text="Open" />
-            </div>
-            <div className="">
-                <p>Trash</p>
+                <Button text="Trash" />
             </div>
         </div>
     )
