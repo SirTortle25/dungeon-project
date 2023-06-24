@@ -17,7 +17,7 @@ export default function Card( props ) {
             </div>
             <div className="flex justify-between w-full gap-2">
                 <Button text="Open" />
-                <Button text="Trash" />
+                <Button text="Trash" color="bg-red-500"/>
             </div>
         </div>
     )
