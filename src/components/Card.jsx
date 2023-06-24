@@ -1,6 +1,8 @@
+import Button from "./Button";
+
 export default function Card( props ) {
     return (
-        <div className="flex w-1/6 h-100 text-Text flex-col bg-Primary border-4 border-Outline rounded-lg justify-center items-center max-w-sm shadow-md shadow-Dark">
+        <div className="flex w-1/6 h-100 text-custom-text flex-col bg-custom-primary border-4 border-custom-outline rounded-lg justify-center items-center max-w-sm shadow-md shadow-custom-dark">
             <div className="">
                 <h1 className="">Level: {props.level}</h1>
             </div>
@@ -9,7 +11,7 @@ export default function Card( props ) {
                 <p>{props.changes}</p>
                 <h2>Items</h2>
                 <p>{props.items}</p>
-                <button class="bg-Outline hover:bg-Background text-Text font-bold py-2 px-4 rounded" >Open</button>
+                <Button text="Open" />
             </div>
             <div className="">
                 <p>Trash</p>
