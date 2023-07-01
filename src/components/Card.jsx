@@ -9,7 +9,7 @@ export default function Card( props ) {
             </div>
             <div>
                 <h2 className="font-bold text-lg">New Features</h2>
-                {props.featureChanges.map( ( feature, index ) => <p key={index}>{feature}</p> )}
+                {props.featureChanges.map( ( feature, index ) => <p key={index}>{`Change #${index + 1}: ${feature}`}</p> )}
             </div>
             <div className="flex justify-between w-full gap-2">
                 <Button text="Open" />

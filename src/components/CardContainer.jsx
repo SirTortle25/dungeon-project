@@ -1,22 +1,9 @@
 import Card from "./Card";
 
-export default function CardContainer() {
+export default function CardContainer( { cards }) {
     return (
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 p-6">
-            <Card
-                level="5"
-                class="Fighter"
-                featureChanges={["+1 Vorple Sword", "-1 Gold Shield"]}/>
-
-            <Card
-                level="12"
-                class="Goat"
-                featureChanges={["+1 Vorple Sword", "-1 Gold Shield"]}/>
-
-            <Card
-                level="17"
-                class="Microwave Goat"
-                featureChanges={["+1 Vorple Sword", "-1 Gold Shield"]}/>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 px-6 pt-32 sm:pt-28 pb-[26rem] sm:pb-44">
+            {cards.map( ( card, index ) => <Card key={index} level={card.level} class={card.class} featureChanges={card.featureChanges} /> )}
         </div>
     );
 }
