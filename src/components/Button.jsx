@@ -4,7 +4,7 @@ export default function Button( props ) {
     return (
         <button
             onClick={props.action ? props.action : () => console.log("Button doesn't do anything yet!")}
-            className={`rounded-lg px-4 py-2 ${btnColor} hover:bg-custom-back text-custom-text`}>
+            className={`rounded-lg px-4 py-2 ${btnColor} text-custom-text transition ease-in-out hover:bg-custom-hover hover:scale-110`}>
             {props.text}
         </button>
     )
