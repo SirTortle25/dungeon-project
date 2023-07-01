@@ -8,12 +8,8 @@ export default function Card( props ) {
                 <h1 className="w-full font-bold text-lg text-center">Class: {props.class}</h1>
             </div>
             <div>
-                <h2 className="font-bold text-lg">Class</h2>
-                {props.classChanges.map( ( change, index ) => <p key={index}>{change}</p> )}
-            </div>
-            <div>
-                <h2 className="font-bold text-lg">Items</h2>
-                {props.itemChanges.map( ( item, index ) => <p key={index}>{item}</p> )}
+                <h2 className="font-bold text-lg">New Features</h2>
+                {props.featureChanges.map( ( feature, index ) => <p key={index}>{feature}</p> )}
             </div>
             <div className="flex justify-between w-full gap-2">
                 <Button text="Open" />

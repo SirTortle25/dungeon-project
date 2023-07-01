@@ -7,22 +7,18 @@ export default function CardForm() {
             <form className="flex flex-col gap-4 w-full sm:w-1/2">
                 <label className="flex flex-col gap-1">
                     <span className="font-bold">Level</span>
-                    <input type="number" className="rounded-lg border-custom-outline border-4 p-2" />
+                    <input type="number" className="rounded-lg border-custom-outline border-4 p-2" id="levelInput"/>
                 </label>
                 <label className="flex flex-col gap-1">
                     <span className="font-bold">Class</span>
-                    <input type="text" className="rounded-lg border-custom-outline border-4 p-2" />
+                    <input type="text" className="rounded-lg border-custom-outline border-4 p-2" id="classInput"/>
                 </label>
                 <label className="flex flex-col gap-1">
-                    <span className="font-bold">Class Changes</span>
-                    <input type="text" className="rounded-lg border-custom-outline border-4 p-2" />
-                </label>
-                <label className="flex flex-col gap-1">
-                    <span className="font-bold">Item Changes</span>
-                    <input type="text" className="rounded-lg border-custom-outline border-4 p-2" />
+                    <span className="font-bold">Added features</span>
+                    <input type="text" className="rounded-lg border-custom-outline border-4 p-2" id="featureChangesInput"/>
                 </label>
                 <div className="flex justify-between w-full gap-2">
-                    <Button text="Add" />
+                    <Button text="Add" action/>
                     <Button text="Cancel" color="bg-red-500"/>
                 </div>
             </form>
