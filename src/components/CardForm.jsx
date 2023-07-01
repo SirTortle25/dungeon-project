@@ -2,7 +2,7 @@ import Button from "./Button";
 
 export default function CardForm() {
     return (
-        <div className="flex flex-col p-6 justify-center items-center bg-custom-primary border-y-4 border-custom-outline">
+        <footer className="flex flex-col absolute p-6 justify-center items-center bg-custom-primary border-y-4 border-custom-outline sticky bottom-0">
             <h1 className="text-2xl font-bold">Add a Card</h1>
             <form className="flex flex-col gap-4 w-full sm:w-1/2">
                 <label className="flex flex-col gap-1">
@@ -22,6 +22,6 @@ export default function CardForm() {
                     <Button text="Cancel" color="bg-red-500"/>
                 </div>
             </form>
-        </div>
+        </footer>
     );
 }
