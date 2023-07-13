@@ -8,6 +8,7 @@ export default function Navbar() {
                 <Button text="Home" />
                 <Button text="About" />
                 <Button text="Contact"/>
+                <Button text="Characters"/>
             </div>
         </div>
     );
