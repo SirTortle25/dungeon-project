@@ -31,8 +31,7 @@ function App() {
   }
 
   function removeCard(index) {
-    console.log(index);
-    setCards(cards.filter(card => cards.indexOf(card) ));
+    setCards(cards.filter(card => index !== cards.indexOf(card)));
   }
     
   return (

@@ -13,7 +13,7 @@ module.exports = {
           back: '#884A39',
           action: '#ed9b21',
           dark: '#2D2D2D',
-          hover:'#9c620d',
+          hover:'#333',
         }
       }
     }
