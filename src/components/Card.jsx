@@ -2,6 +2,21 @@ import React, { useState } from "react";
 
 import Button from "./Button";
 
+function Feature( { index, feature } ) {
+
+    const [details, setDetails] = useState("boolean sucks");
+
+    return (
+        <div className="border-b-4 pb-2 border-custom-outline">
+            <h1>{`Feature change #${index}:`}</h1>
+            <div className="border-4 border-custom-outline p-4 bg-custom-text rounded-md">
+                <h1>{feature}</h1>
+                <p>{details}</p>
+            </div>
+        </div>
+    );
+}
+
 export default function Card( props ) {
 
     const [isOpen, setIsOpen] = useState(false);
@@ -20,20 +35,10 @@ export default function Card( props ) {
                     <h1 className="font-bold text-3xl">{props.level}</h1>
                 </div>
             </div>
-            <div>
+            <div className="flex flex-col gap-2">
                 <h2 className="font-bold text-lg">New Features</h2>
-                {props.featureChanges.map( ( feature, index ) => <p key={index}>{`Change #${index + 1}: ${feature}`}</p> )}
+                {props.featureChanges.map( ( feature, index ) =>  <Feature key={feature} index={index + 1} feature={feature}/>)}
             </div>
-            {isOpen && 
-            <div className="border-4 border-custom-outline p-4 bg-custom-text rounded-md">
-                <h1>Testing</h1>
-                <h1>Testing</h1>
-                <h1>Testing</h1>
-                <h1>Testing</h1>
-                <h1>Testing</h1>
-                <h1>Testing</h1>
-                <h1>Testing</h1>
-            </div>}
             <div className="flex justify-between w-full gap-2">
                 <Button action={() => setIsOpen(!isOpen)} text="Open" color="bg-custom-back"/>
                 <Button action={() => props.removeCard(props.index)} text="Trash" color="bg-red-500"/>
