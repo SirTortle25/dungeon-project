@@ -1,11 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Button from "./Button";
 import { v4 as uuidv4 } from 'uuid'
 
 export default function CardForm( { addFunction, clearCards, cancel }) {
-    const [ level, setLevel ] = useState( 0 );
+    const [ level, setLevel ] = useState();
     const [ classType, setClassType ] = useState( "" );
     const [ featureChanges, setFeatureChanges ] = useState( "" );
+
+    const field = useRef()
+
+    useEffect(() => {
+        field.current.focus();
+    }, [])
 
     function createAndAddCard(e) {
         e.preventDefault();
@@ -29,7 +35,7 @@ export default function CardForm( { addFunction, clearCards, cancel }) {
         <div className="w-96 flex flex-col gap-6 p-6 justify-center items-center bg-custom-primary border-4 border-custom-outline rounded-xl fixed bottom-8 right-8">
             <label className="flex flex-col gap-1 w-full">
                 <span className="font-bold">Level</span>
-                <input type="number" className="rounded-lg border-custom-outline border-4 p-2" id="levelInput" value={level} onChange={e => setLevel( e.target.value )}/>
+                <input ref={field} type="number" className="rounded-lg border-custom-outline border-4 p-2" id="levelInput" value={level} onChange={e => setLevel( e.target.value )}/>
             </label>
             <label className="flex flex-col gap-1 w-full">
                 <span className="font-bold">Class</span>

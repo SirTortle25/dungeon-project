@@ -3,15 +3,20 @@ import Button from "../components/Button";
 import Card from "../components/Card";
 import CardForm from '../components/CardForm';
 
+import { createClient } from "@supabase/supabase-js";
+const supabase = createClient("https://xdcxzylhawkrdkloiiyw.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhkY3h6eWxoYXdrcmRrbG9paXl3Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY5MDY2MDE2OCwiZXhwIjoyMDA2MjM2MTY4fQ.WzdIAbb1mN_hPfSKeI3ganMFcWklUU4wt33qbC36QZ8");
+
 export default function Home() {
 
   const [cards, setCards] = useState([]);
   const [showForm, setShowForm] = useState(false);
 
-  useEffect(() => {
-    const savedCards = localStorage.getItem('cards');
-    setCards(savedCards ? JSON.parse(savedCards) : []);
-  }, []); // load cards
+  async function loadData() {
+    let {data} = await supabase.from("Cards").select();
+    setCards(data);
+  }
+
+  useEffect(() => {loadData()}, []);
 
   useEffect(() => {
     if (cards.length === 0) return;
@@ -35,7 +40,7 @@ export default function Home() {
   return (
     <div className="">
         <div className="flex flex-row flex-wrap gap-8 p-8">
-            {cards.map( ( card, index ) => <Card key={card.uuid} index={index} level={card.level} class={card.class} featureChanges={card.featureChanges} removeCard={removeCard}/> )}
+            {cards.map( ( card, index ) => <Card key={card.uuid} visible_key={card.uuid} index={index} level={card.level} class={card.class} featureChanges={card.featureChanges} removeCard={removeCard}/> )}
         </div>
         {showForm ?
         <CardForm addFunction={addCard} clearCards={clearCards} cancel={() => setShowForm(false)}/>
