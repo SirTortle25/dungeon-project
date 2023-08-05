@@ -8,39 +8,41 @@ const supabase = createClient("https://xdcxzylhawkrdkloiiyw.supabase.co", "eyJhb
 
 export default function Home() {
 
+  
   const [cards, setCards] = useState([]);
   const [showForm, setShowForm] = useState(false);
-
+  
   async function loadData() {
     let {data} = await supabase.from("Cards").select();
     setCards(data);
   }
+  
+  async function addCard(card) {
+    const {data, error} = await supabase.from("Cards").insert([card]).select()
+    if (data) setCards([...cards,data[0]]);
+    if (error) console.error(error);
+  }
 
   useEffect(() => {loadData()}, []);
 
-  useEffect(() => {
-    if (cards.length === 0) return;
-    localStorage.setItem('cards',JSON.stringify(cards));
-  }, [cards]); // save cards
-
-  function addCard(new_card) {
-    setCards([...cards, new_card]);
-  }
-
-  function clearCards(e) {
+  async function clearCards(e) {
     e.preventDefault();
     setCards([]);
-    localStorage.removeItem('cards');
+    await supabase.from("Cards").delete().gt("level",0);
+    await supabase.from("Cards").delete().lt("level",0);
+    await supabase.from("Cards").delete().eq("level",0);
   }
 
-  function removeCard(index) {
+  async function removeCard(index, id) {
     setCards(cards.filter(card => index !== cards.indexOf(card)));
+    const { error } = await supabase.from("Cards").delete().eq("id",id);
+    if (error) console.error(error);
   }
     
   return (
     <div className="">
         <div className="flex flex-row flex-wrap gap-8 p-8">
-            {cards.map( ( card, index ) => <Card key={card.uuid} visible_key={card.uuid} index={index} level={card.level} class={card.class} featureChanges={card.featureChanges} removeCard={removeCard}/> )}
+            {cards.map( ( card, index ) => <Card key={card.id} visible_key={card.id} index={index} level={card.level} class={card.class} featureChanges={card.featureChanges} removeCard={removeCard}/> )}
         </div>
         {showForm ?
         <CardForm addFunction={addCard} clearCards={clearCards} cancel={() => setShowForm(false)}/>

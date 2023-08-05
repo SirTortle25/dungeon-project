@@ -51,7 +51,7 @@ export default function Card( props ) {
             </div>}
             <div className="flex justify-between w-full gap-2">
                 <Button action={() => setIsOpen(!isOpen)} text={isOpen ? "Close" : "Open"} color="bg-custom-back"/>
-                <Button action={() => props.removeCard(props.index)} text="Trash" color="bg-red-500"/>
+                <Button action={() => props.removeCard(props.index, props.visible_key)} text="Trash" color="bg-red-500"/>
             </div>
         </div>
     )

@@ -16,10 +16,9 @@ export default function CardForm( { addFunction, clearCards, cancel }) {
     function createAndAddCard(e) {
         e.preventDefault();
         const newCard = {
-            uuid: uuidv4(),
             level: level,
             class: classType,
-            featureChanges: featureChanges.split(", ")
+            featureChanges: featureChanges
         };
         addFunction( newCard );
     }
